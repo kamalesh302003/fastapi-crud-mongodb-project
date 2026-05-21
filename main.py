@@ -9,10 +9,10 @@ app=FastAPI()
 client=MongoClient("mongodb://localhost:27017")
 
 #Database
-db=client["employeedb"]
+db=client["studentdb"]
 
 #Collection
-collection=db["employees"]
+collection=db["students"]
 
 #Pydantic Model
 class Student(BaseModel):
@@ -29,7 +29,7 @@ def home():
 @app.post("/students/")
 def create_student(student:Student):
 
-    data = {
+    data={
         "name":student.name,
         "age":student.age,
         "email":student.email
